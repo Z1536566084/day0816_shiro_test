@@ -96,7 +96,7 @@ public class SysUserController {
     }
 
 
-
+    //在用户管理界面显示所有的用户
     @RequestMapping("loadUser")
     public String loadUser(Model model){
         List<SysUser> userList = userService.loadAll();
@@ -104,4 +104,24 @@ public class SysUserController {
         return "user";
     }
 
+    //根据用户id删除当前用户信息并返回用户显示界面
+    @RequestMapping("deleteUser")
+    public String deleteUser(int userId){
+        boolean b = userService.delUserByUserId(userId);
+        return b?"redirect:loadUser":"error";
+    }
+
+    //根据当前用户id查询用户所有信息
+    @RequestMapping("loadUserByUserId")
+    public String loadUserByUserId(int userId,Model model){
+        SysUser sysUser = userService.loadUserByUserId(userId);
+        model.addAttribute("updateUser",sysUser);
+        return "edit";
+    }
+
+    @RequestMapping("updateUser")
+    public String updateUser(SysUser sysUser){
+        boolean b = userService.updateByUser(sysUser);
+        return b?"redirect:loadUser":"error";
+    }
 }

@@ -45,4 +45,25 @@ public interface SysUserMapper {
      * @return 所有的用户对象集合
      */
     public List<SysUser> loadAll();
+
+    /**
+     * 根据用户id删除用户对象信息
+     * @param userId
+     * @return
+     */
+    public int delUserByUserId(int userId);
+
+    /**
+     * 根据当前用户修改用户信息
+     * @param sysUser 当前用户对象
+     * @return
+     */
+    public int updateByUser(SysUser sysUser);
+
+    /**
+     * 根据当前用户id查询其信息
+     * @param UserId
+     * @return
+     */
+    public SysUser loadUserByUserId(int UserId);
 }

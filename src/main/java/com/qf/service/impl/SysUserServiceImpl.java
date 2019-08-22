@@ -49,4 +49,25 @@ public class SysUserServiceImpl implements SysUserService {
         List<SysUser> userList = userMapper.loadAll();
         return userList;
     }
+    //根据用户id删除用户对象信息
+    @Override
+    public boolean delUserByUserId(int userId) {
+        return userMapper.delUserByUserId(userId)>0?true:false;
+    }
+
+
+    //修改当前用户信息
+    @Override
+    public boolean updateByUser(SysUser sysUser) {
+        int i = userMapper.updateByUser(sysUser);
+        return i>0?true:false;
+    }
+    //根据当前用户id查询用户所有信息
+    @Override
+    public SysUser loadUserByUserId(int UserId) {
+        SysUser sysUser = userMapper.loadUserByUserId(UserId);
+        return sysUser;
+    }
+
+
 }

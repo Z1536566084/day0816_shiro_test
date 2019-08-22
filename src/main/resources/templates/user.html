@@ -151,8 +151,8 @@
                                 <th>loginName</th>
                                 <th>password</th>
                                 <th>state</th>
-                                <th>createTime</th>
-                                <th>realname</th>
+<!--                                <th>createTime</th>-->
+                                <th>realName</th>
                                 <th width="100">操作</th>
                             </tr>
                             </thead>
@@ -163,7 +163,7 @@
                                 <td th:text="${u.loginName}"></td>
                                 <td th:text="${u.password}"></td>
                                 <td th:text="${u.state}"></td>
-                                <td th:text="${u.createTime}"></td>
+<!--                                <td th:text="${u.createTime}"></td>-->
                                 <td th:text="${u.realname}"></td>
                                 <td>
                                     <button type="button" th:value="${u.userId}" class="btn btn-success btn-xs"><i class=" glyphicon glyphicon-check"></i></button>
@@ -194,14 +194,12 @@
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="script/docs.min.js"></script>
 <script type="text/javascript">
-
-
     function deleteUser(userId){
-        location.href="deleteuser?userId="+userId;
+        location.href="deleteUser?userId="+userId;
     }
 
     function loadById(userId) {
-        location.href="loadById?userId="+userId;
+        location.href="loadUserByUserId?userId="+userId;
     }
     function deleteUserAll(array){
         location.href="deleteUserAll?array="+array;

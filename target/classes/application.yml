@@ -4,7 +4,11 @@ server:
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
+<<<<<<< HEAD
     driver-class-name: com.mysql.cj.jdbc.Driver
+=======
+    driver-class-name: com.mysql.jdbc.Driver
+>>>>>>> origin/master
     url: jdbc:mysql://localhost:3306/myrbac?characterEncoding=utf-8&serverTimezone=UTC
     username: root
     password:
