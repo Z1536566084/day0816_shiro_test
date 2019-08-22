@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mapping 映射规范
+  1、mapper.namespace书写；
+  2、resultMap 作用；
+  3、sql指令 参数（id，parametermap/type,resultMap/type）
+
+-->
+<mapper namespace="com.qf.mapper.SysUserMapper">
+
+    <resultMap id="sysUserMap" type="com.qf.pojo.SysUser">
+        <id property="userId" column="USERID"/>
+        <result property="loginName" column="loginName"/>
+        <result property="password" column="password"/>
+        <result property="state" column="state"/>
+        <result property="createTime" column="createTime"/>
+        <result property="realname" column="realname"/>
+    </resultMap>
+    <sql id="sysUser_colums">
+        userid,
+        loginName,
+        password,
+        state,
+        createTime,
+        realname
+    </sql>
+    
+    <select id="findUserInfoByLoginName" parameterType="string" resultMap="sysUserMap">
+        select
+        <include refid="sysUser_colums"/>
+        from
+        tb_sys_user u
+        where
+        u.loginName = #{loginName}
+    </select>
+
+    <select id="findPermissionsByUserName" parameterType="string" resultType="sysPermission">
+    select p.*
+        from
+         tb_sys_user        u,
+         tb_sys_role        r,
+         tb_sys_permission  p,
+         tb_user_role       ur,
+         tb_role_permission rp
+    where
+        u.userid = ur.user_id
+        and ur.role_id = r.role_id
+        and r.role_id = rp.role_id
+        and rp.permission_id = p.permission_id
+        and u.loginName=#{loginName}
+    </select>
+
+    <insert id="saveUser" parameterType="sysUser">
+        insert into tb_sys_user values(#{userId},#{loginName},md5(#{password}),#{state},#{createTime},#{realname})
+    </insert>
+
+    <select id="getMaxUserId" parameterType="int" resultType="int">
+        select max(userid) from tb_sys_user
+    </select>
+
+    <select id="loadAll"  resultType="sysUser">
+        select * from tb_sys_user
+    </select>
+</mapper>
