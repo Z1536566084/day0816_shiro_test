@@ -41,4 +41,25 @@ public interface SysUserService {
      * @return 所有的用户对象集合
      */
     public List<SysUser> loadAll();
+
+    /**
+     * 根据用户id删除用户对象信息
+     * @param userId
+     * @return
+     */
+    public boolean delUserByUserId(int userId);
+
+    /**
+     * //修改当前用户信息
+     * @param sysUser 当前用户
+     * @return
+     */
+    public boolean updateByUser(SysUser sysUser);
+
+    /**
+     * 根据当前用户id查询其信息
+     * @param UserId
+     * @return 当前用户信息集合
+     */
+    public SysUser loadUserByUserId(int UserId);
 }
