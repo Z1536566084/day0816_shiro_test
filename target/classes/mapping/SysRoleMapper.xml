@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mapping 映射规范
+  1、mapper.namespace书写；
+  2、resultMap 作用；
+  3、sql指令 参数（id，parametermap/type,resultMap/type）-->
+<mapper namespace="com.qf.mapper.SysRoleMapper">
+    <resultMap id="sysRoleMap" type="com.qf.pojo.SysRole">
+        <id property="role_id" column="role_id"/>
+        <result property="role_name" column="role_name"/>
+        <result property="role_desc" column="role_desc"/>
+        <result property="if_vilid" column="if_vilid"/>
+    </resultMap>
+    <sql id="sysRole_columns">
+        role_id,
+        role_name,
+        role_desc,
+        if_vilid
+    </sql>
+    <select id="loadRoleAll" resultType="com.qf.pojo.SysRole">
+        select * from tb_sys_role
+    </select>
+</mapper>
