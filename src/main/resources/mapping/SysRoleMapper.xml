@@ -21,6 +21,10 @@
     </sql>
     <!--展示全部角色信息-->
     <select id="loadRoleAll" resultType="com.qf.pojo.SysRole">
-        select * from tb_sys_role
+        select
+            <include refid="sysRole_columns"></include>
+        from
+            tb_sys_role
     </select>
+
 </mapper>

@@ -63,8 +63,6 @@
     <select id="loadAll"  resultType="sysUser">
         select * from tb_sys_user
     </select>
-<<<<<<< HEAD
-=======
     <!--根据用户id删除用户对象信息-->
     <delete id="delUserByUserId" parameterType="int">
         delete from tb_sys_user where userid=#{userId}
@@ -79,5 +77,4 @@
         select * from tb_sys_user
         <where>userid=#{userId}</where>
     </select>
->>>>>>> origin/master
 </mapper>
